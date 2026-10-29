@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Questionário | Portal de Estudos</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <p class="marca">Portal de Estudos</p>
+    <nav class="menu" aria-label="Menu principal">
+      <ul>
+        <li><a href="acesso.html" class="menu-link">Acesso</a></li>
+        <li><a href="questionario.html" class="menu-link" aria-current="page">Questionário</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="principal">
+    <p class="sobretitulo">Perfil de estudo</p>
+    <h1 class="titulo-principal">Conte como você quer aprender</h1>
+    <p class="texto-apoio">Escolha seus interesses e conte seu objetivo.</p>
+
+    <section class="cartao cartao-unico" aria-labelledby="titulo-questionario">
+      <h2 id="titulo-questionario" class="titulo-form">Questionário</h2>
+
+      <form id="questionario" class="formulario">
+        <div class="campo">
+          <label for="quest-participante">Nome do participante (obrigatório)</label>
+          <input class="controle" type="text" id="quest-participante" name="participante"
+                 placeholder="Ex.: Ana Souza" minlength="2" maxlength="60"
+                 autocomplete="name" required>
+        </div>
+
+        <div class="campo">
+          <label for="quest-area">Área de interesse (obrigatória)</label>
+          <select class="controle" id="quest-area" name="area" required>
+            <option value="">Selecione uma área</option>
+            <option value="Desenvolvimento Web">Desenvolvimento Web</option>
+            <option value="Redes de Computadores">Redes de Computadores</option>
+            <option value="Banco de Dados">Banco de Dados</option>
+          </select>
+        </div>
+
+        <!-- Radio: uma única escolha (mesmo name) -->
+        <fieldset class="campo grupo">
+          <legend>Experiência com HTML (obrigatória)</legend>
+          <div class="opcoes">
+            <div class="opcao">
+              <input type="radio" id="exp-iniciante" name="experiencia" value="Iniciante" required>
+              <label for="exp-iniciante">Iniciante</label>
+            </div>
+            <div class="opcao">
+              <input type="radio" id="exp-intermediario" name="experiencia" value="Intermediário">
+              <label for="exp-intermediario">Intermediário</label>
+            </div>
+            <div class="opcao">
+              <input type="radio" id="exp-avancado" name="experiencia" value="Avançado">
+              <label for="exp-avancado">Avançado</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Checkbox: escolhas independentes -->
+        <fieldset class="campo grupo">
+          <legend>Recursos que deseja praticar (opcional)</legend>
+          <div class="opcoes">
+            <div class="opcao">
+              <input type="checkbox" id="rec-formularios" name="recursos" value="Formulários">
+              <label for="rec-formularios">Formulários</label>
+            </div>
+            <div class="opcao">
+              <input type="checkbox" id="rec-flexbox" name="recursos" value="Flexbox">
+              <label for="rec-flexbox">Flexbox</label>
+            </div>
+            <div class="opcao">
+              <input type="checkbox" id="rec-imagens-links" name="recursos" value="Imagens e links">
+              <label for="rec-imagens-links">Imagens e links</label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="campo">
+          <label for="quest-horas">Horas de estudo por semana (obrigatório)</label>
+          <input class="controle" type="number" id="quest-horas" name="horas"
+                 min="1" max="20" step="1" value="3" required
+                 aria-describedby="ajuda-horas">
+          <p id="ajuda-horas" class="ajuda">Informe um número inteiro de 1 a 20.</p>
+        </div>
+
+        <div class="campo">
+          <label for="quest-objetivo">Objetivo de aprendizagem</label>
+          <textarea class="controle" id="quest-objetivo" name="objetivo"
+                    rows="4" maxlength="300" aria-describedby="ajuda-objetivo"></textarea>
+          <p id="ajuda-objetivo" class="ajuda">Opcional. Máximo de 300 caracteres.</p>
+        </div>
+
+        <div class="botoes">
+          <button type="submit" class="botao botao-primario">Enviar respostas</button>
+          <button type="reset" class="botao botao-secundario">Limpar</button>
+          <button type="button" class="botao botao-secundario" id="botao-ajuda"
+                  aria-expanded="false" aria-controls="texto-ajuda">Como preencher?</button>
+        </div>
+
+        <p id="texto-ajuda" class="ajuda caixa-ajuda" hidden>
+          Preencha os campos obrigatórios, escolha um nível de experiência e marque quantos
+          recursos quiser. Use apenas dados fictícios.
+        </p>
+      </form>
+
+      <div id="resumo-questionario" class="resumo" role="status" aria-live="polite" hidden></div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Atividade acadêmica · Use apenas dados fictícios</p>
+  </footer>
+
+  <script src="interacao.js"></script>
+</body>
+</html>

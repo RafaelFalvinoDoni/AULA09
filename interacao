@@ -1,0 +1,56 @@
+
+
+const formularios = [
+  { id: "login", resumo: "resumo-login", titulo: "Simulação de login" },
+  { id: "cadastro", resumo: "resumo-cadastro", titulo: "Simulação de cadastro" },
+  { id: "questionario", resumo: "resumo-questionario", titulo: "Respostas do questionário" }
+];
+
+formularios.forEach(function (item) {
+  const form = document.getElementById(item.id);
+  const caixa = document.getElementById(item.resumo);
+  if (!form || !caixa) return; // o formulário não existe nesta página
+
+  // "submit" só dispara depois que a validação nativa aprova os campos
+  form.addEventListener("submit", function (evento) {
+    evento.preventDefault();
+
+    const dados = new FormData(form);
+    const lista = document.createElement("ul");
+
+    dados.forEach(function (valor, nome) {
+      if (valor === "") return; // mostra apenas campos preenchidos
+      const linha = document.createElement("li");
+      const exibido = nome === "senha" ? "•••••• (oculta)" : valor;
+      linha.textContent = nome + ": " + exibido;
+      lista.appendChild(linha);
+    });
+
+    const titulo = document.createElement("h3");
+    titulo.textContent = item.titulo;
+
+    const aviso = document.createElement("p");
+    aviso.textContent = "Nada foi enviado ou salvo. Esta é apenas uma demonstração.";
+
+    caixa.replaceChildren(titulo, lista, aviso);
+    caixa.hidden = false;
+  });
+
+  // "reset" restaura os valores iniciais; aqui também escondemos o resumo
+  form.addEventListener("reset", function () {
+    caixa.hidden = true;
+    caixa.replaceChildren();
+  });
+});
+
+// Botão "Como preencher?" (type="button"): não envia nem valida o formulário
+const botaoAjuda = document.getElementById("botao-ajuda");
+const textoAjuda = document.getElementById("texto-ajuda");
+
+if (botaoAjuda && textoAjuda) {
+  botaoAjuda.addEventListener("click", function () {
+    const aberto = !textoAjuda.hidden;
+    textoAjuda.hidden = aberto;
+    botaoAjuda.setAttribute("aria-expanded", String(!aberto));
+  });
+}

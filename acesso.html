@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acesso | Portal de Estudos</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+  <header class="cabecalho">
+    <p class="marca">Portal de Estudos</p>
+    <nav class="menu" aria-label="Menu principal">
+      <ul>
+        <li><a href="acesso.html" class="menu-link" aria-current="page">Acesso</a></li>
+        <li><a href="questionario.html" class="menu-link">Questionário</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="principal">
+    <p class="sobretitulo">Boas-vindas</p>
+    <h1 class="titulo-principal">Seu próximo passo começa aqui</h1>
+    <p class="texto-apoio">Entre ou crie seu perfil para organizar seus estudos.</p>
+
+    <div class="cartoes">
+
+      <!-- Cartão esquerdo: login -->
+      <section class="cartao" aria-labelledby="titulo-login">
+        <h2 id="titulo-login" class="titulo-form">Entrar</h2>
+
+        <form id="login" class="formulario">
+          <div class="campo">
+            <label for="login-email">E-mail (obrigatório)</label>
+            <input class="controle" type="email" id="login-email" name="email"
+                   placeholder="ana@example.com" autocomplete="username" required>
+          </div>
+
+          <div class="campo">
+            <label for="login-senha">Senha (obrigatória)</label>
+            <input class="controle" type="password" id="login-senha" name="senha"
+                   minlength="6" autocomplete="current-password" required>
+          </div>
+
+          <div class="campo opcao">
+            <input type="checkbox" id="login-lembrar" name="lembrar" value="sim">
+            <label for="login-lembrar">Lembrar meu e-mail</label>
+          </div>
+
+          <div class="botoes">
+            <button type="submit" class="botao botao-primario">Entrar</button>
+            <button type="reset" class="botao botao-secundario">Limpar</button>
+          </div>
+        </form>
+
+        <div id="resumo-login" class="resumo" role="status" aria-live="polite" hidden></div>
+      </section>
+
+      <!-- Cartão direito: cadastro -->
+      <section class="cartao" aria-labelledby="titulo-cadastro">
+        <h2 id="titulo-cadastro" class="titulo-form">Criar cadastro</h2>
+
+        <form id="cadastro" class="formulario">
+          <div class="campo">
+            <label for="cadastro-nome">Nome completo (obrigatório)</label>
+            <input class="controle" type="text" id="cadastro-nome" name="nome"
+                   placeholder="Ex.: Ana Souza" minlength="2" maxlength="60"
+                   autocomplete="name" required>
+          </div>
+
+          <div class="campo">
+            <label for="cadastro-email">E-mail (obrigatório)</label>
+            <input class="controle" type="email" id="cadastro-email" name="email"
+                   placeholder="ana@example.com" autocomplete="email" required>
+          </div>
+
+          <div class="campo">
+            <label for="cadastro-senha">Crie uma senha (obrigatória)</label>
+            <input class="controle" type="password" id="cadastro-senha" name="senha"
+                   minlength="6" autocomplete="new-password" required
+                   aria-describedby="ajuda-senha">
+            <p id="ajuda-senha" class="ajuda">Use pelo menos 6 caracteres nesta simulação.</p>
+          </div>
+
+          <div class="campo">
+            <label for="cadastro-curso">Curso (obrigatório)</label>
+            <select class="controle" id="cadastro-curso" name="curso" required>
+              <option value="">Selecione seu curso</option>
+              <option value="Análise e Desenvolvimento de Sistemas">Análise e Desenvolvimento de Sistemas</option>
+              <option value="Ciência da Computação">Ciência da Computação</option>
+              <option value="Sistemas de Informação">Sistemas de Informação</option>
+            </select>
+          </div>
+
+          <div class="campo opcao">
+            <input type="checkbox" id="cadastro-termos" name="termos" value="aceito" required>
+            <label for="cadastro-termos">Concordo com os termos desta atividade (obrigatório)</label>
+          </div>
+
+          <div class="botoes">
+            <button type="submit" class="botao botao-primario">Cadastrar</button>
+            <button type="reset" class="botao botao-secundario">Limpar</button>
+          </div>
+        </form>
+
+        <div id="resumo-cadastro" class="resumo" role="status" aria-live="polite" hidden></div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="rodape">
+    <p>Atividade acadêmica · Use apenas dados fictícios</p>
+  </footer>
+
+  <script src="interacao.js"></script>
+</body>
+</html>
